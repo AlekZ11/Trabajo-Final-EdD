@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controlador;
 
 import com.google.gson.Gson;
@@ -63,5 +60,16 @@ public class ControladorAutos {
             System.out.println("No se encontraron objetos guardados");
         }
 
+    }
+    public String[][] toArray(){
+        String[][] carro = new String[getSize()][4];
+        for (int i = 0; i < carro.length; i++) {
+            carro[i][0] = listaAutos.obtenerDato(i).getPlaca();
+            carro[i][1] = listaAutos.obtenerDato(i).getMarca().toString();
+            carro[i][2] = listaAutos.obtenerDato(i).getModelo();
+            carro[i][3] = listaAutos.obtenerDato(i).getColor();
+            carro[i][4] = listaAutos.obtenerDato(i).getPrecio().toString();
+        }
+        return carro;
     }
 }
