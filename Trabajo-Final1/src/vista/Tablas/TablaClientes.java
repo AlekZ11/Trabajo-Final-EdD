@@ -21,7 +21,7 @@ public class TablaClientes extends AbstractTableModel{
     
     @Override
     public int getRowCount() {
-       return lc.getSize();
+        return lc.getSize();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class TablaClientes extends AbstractTableModel{
     public String getColumnName(int column) {
         switch (column) {
             case 0:
-                return "Nombres Completos";
+                return "Nombres";
             case 1:
                 return "Identificacion";
             /*case 2:
@@ -52,7 +52,7 @@ public class TablaClientes extends AbstractTableModel{
         Cliente p = lc.obtenerDato(rowIndex);
         switch (columnIndex) {
             case 0:
-                return p.getAllNombre();
+                return p.getNombres();
             case 1:
                 return p.getIdentificacion();
             /*case 2:

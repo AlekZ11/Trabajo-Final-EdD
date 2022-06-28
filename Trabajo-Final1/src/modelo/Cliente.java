@@ -9,30 +9,21 @@ package modelo;
  * @author LENOVO LEGION 5
  */
 public class Cliente {
-   private String nombre;
-   private String apellido;
+   private String nombres;
    private Integer identificacion;
+   private HistorialCompras historial;
 
-    public Cliente(String name, String lastname, Integer identificacion) {
-        this.nombre = name;
-        this.apellido = lastname;
+    public Cliente(String name, Integer identificacion) {
+        this.nombres = name;
         this.identificacion = identificacion;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
     public Integer getIdentificacion() {
@@ -42,8 +33,12 @@ public class Cliente {
     public void setIdentificacion(Integer identificacion) {
         this.identificacion = identificacion;
     }
-   
-    public String getAllNombre(){
-        return nombre + " " + apellido;
+
+    public HistorialCompras getHistorial() {
+        return historial;
+    }
+
+    public void setHistorial(HistorialCompras historial) {
+        this.historial = historial;
     }
 }
