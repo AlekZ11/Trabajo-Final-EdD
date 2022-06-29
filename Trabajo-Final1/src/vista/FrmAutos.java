@@ -7,21 +7,25 @@ package vista;
 import controlador.ControladorAutos;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.Autos;
+import modelo.Marcas;
 
 /**
  *
  * @author LENOVO LEGION 5
  */
 public class FrmAutos extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form FrmAutos
      */
     public FrmAutos() {
         initComponents();
+        controlAutos.cargar();
         cargarTabla();
     }
     ControladorAutos controlAutos = new ControladorAutos();
+    Autos autoSeleccionado = new Autos();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,8 +55,9 @@ public class FrmAutos extends javax.swing.JFrame {
         lblNotifica = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         textf_precio1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -137,7 +142,7 @@ public class FrmAutos extends javax.swing.JFrame {
         getContentPane().add(boton_eliminar);
         boton_eliminar.setBounds(260, 220, 80, 30);
         getContentPane().add(lblNotifica);
-        lblNotifica.setBounds(10, 530, 670, 30);
+        lblNotifica.setBounds(10, 530, 550, 30);
 
         jLabel7.setText("Año:");
         getContentPane().add(jLabel7);
@@ -145,11 +150,20 @@ public class FrmAutos extends javax.swing.JFrame {
         getContentPane().add(textf_precio1);
         textf_precio1.setBounds(530, 150, 140, 30);
 
-        setBounds(0, 0, 707, 618);
+        jButton1.setText("Seleccionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(580, 530, 100, 30);
+
+        setBounds(0, 0, 707, 615);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botn_salirActionPerformed
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_botn_salirActionPerformed
 
     private void boton_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_guardarActionPerformed
@@ -159,10 +173,22 @@ public class FrmAutos extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_boton_guardarActionPerformed
+    public Autos getAutos(){
+        return autoSeleccionado;
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (tabla_autos.getSelectedRow()>=0) {
+            autoSeleccionado = controlAutos.getListaAuto().obtenerDato(tabla_autos.getSelectedRow());
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione un registro de la tabla");
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
     private void cargarTabla(){
         controlAutos.cargar();
-        controlAutos.getListaCliente();
-        String[] columnas={"Placa", "Marca", "Modelo", "Color", "Precio"};
+        controlAutos.getListaAuto();
+        String[] columnas={"Chasis", "Marca", "Modelo", "Color", "Precio", "Año"};
         String[][] tabla = controlAutos.toArray();
         tabla_autos.setModel(new DefaultTableModel(tabla, columnas));
     }
@@ -206,6 +232,7 @@ public class FrmAutos extends javax.swing.JFrame {
     private javax.swing.JButton boton_editar;
     private javax.swing.JButton boton_eliminar;
     private javax.swing.JButton boton_guardar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

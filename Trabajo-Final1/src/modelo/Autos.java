@@ -109,5 +109,7 @@ public class Autos {
         this.precio = precio;
         this.anio = anio;
     }
-    
+    public Autos() {
+        
+    }
 }
