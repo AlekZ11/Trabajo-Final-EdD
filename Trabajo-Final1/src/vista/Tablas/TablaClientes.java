@@ -26,7 +26,7 @@ public class TablaClientes extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 2;
+        return 4;
     }
 
     @Override
@@ -36,11 +36,11 @@ public class TablaClientes extends AbstractTableModel{
                 return "Nombres";
             case 1:
                 return "Identificacion";
-            /*case 2:
-                return "Fecha de Finalizacion";
+            case 2:
+                return "Telefono";
             case 3:
-                return "Dias Restantes";
-            case 4:
+                return "Direccion";
+            /*case 4:
                 return "Pago";*/
             default:
                 return null;
@@ -55,11 +55,11 @@ public class TablaClientes extends AbstractTableModel{
                 return p.getNombres();
             case 1:
                 return p.getIdentificacion();
-            /*case 2:
-                return p.getFecha();
+            case 2:
+                return p.getTelefono();
             case 3:
-                return p.getTiempo();
-            case 4:
+                return p.getDireccion();
+            /*case 4:
                 return p.getPago();*/
             default:
                 return null;
