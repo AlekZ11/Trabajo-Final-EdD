@@ -64,11 +64,12 @@ public class ControladorAutos {
     public String[][] toArray(){
         String[][] carro = new String[getSize()][4];
         for (int i = 0; i < carro.length; i++) {
-            carro[i][0] = listaAutos.obtenerDato(i).getPlaca();
+            carro[i][0] = listaAutos.obtenerDato(i).getChasis();
             carro[i][1] = listaAutos.obtenerDato(i).getMarca().toString();
             carro[i][2] = listaAutos.obtenerDato(i).getModelo();
             carro[i][3] = listaAutos.obtenerDato(i).getColor();
             carro[i][4] = listaAutos.obtenerDato(i).getPrecio().toString();
+            carro[i][5] = listaAutos.obtenerDato(i).getAnio()+"";
         }
         return carro;
     }

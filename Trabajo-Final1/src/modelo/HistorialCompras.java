@@ -14,7 +14,7 @@ public class HistorialCompras {
     ListaEnlazadaServices<String> historial = new ListaEnlazadaServices<>();
 
     public HistorialCompras(Autos auto) {
-        historial.insertarAlInicio(auto.getModelo() + "--" + auto.getPlaca() + "--" + String.valueOf(auto.getPrecio()));
+        historial.insertarAlInicio(auto.getModelo() + "--" + auto.getChasis()+ "--" + String.valueOf(auto.getPrecio()));
     }
 
     public ListaEnlazadaServices<String> getHistorial() {
