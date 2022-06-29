@@ -4,6 +4,10 @@
  */
 package vista;
 
+import controlador.ControladorAutos;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author LENOVO LEGION 5
@@ -15,8 +19,9 @@ public class FrmAutos extends javax.swing.JFrame {
      */
     public FrmAutos() {
         initComponents();
+        cargarTabla();
     }
-
+    ControladorAutos controlAutos = new ControladorAutos();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,22 +31,133 @@ public class FrmAutos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        textf_placa = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        textf_marca = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        textf_modelo = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        textf_color = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        textf_precio = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_autos = new javax.swing.JTable();
+        botn_salir = new javax.swing.JButton();
+        boton_guardar = new javax.swing.JButton();
+        boton_editar = new javax.swing.JButton();
+        boton_eliminar = new javax.swing.JButton();
+        lblNotifica = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Vehículo");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(270, 10, 93, 36);
 
-        pack();
+        jLabel2.setText("Placa:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(10, 60, 50, 30);
+        getContentPane().add(textf_placa);
+        textf_placa.setBounds(50, 60, 140, 30);
+
+        jLabel3.setText("Marca:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(230, 60, 50, 30);
+        getContentPane().add(textf_marca);
+        textf_marca.setBounds(280, 60, 140, 30);
+
+        jLabel4.setText("Modelo:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(470, 60, 50, 30);
+        getContentPane().add(textf_modelo);
+        textf_modelo.setBounds(530, 60, 140, 30);
+
+        jLabel5.setText("Color:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(110, 140, 50, 30);
+        getContentPane().add(textf_color);
+        textf_color.setBounds(170, 140, 140, 30);
+
+        jLabel6.setText("Precio:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(360, 140, 50, 30);
+        getContentPane().add(textf_precio);
+        textf_precio.setBounds(420, 140, 140, 30);
+
+        tabla_autos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Placa", "Marca", "Modelo", "Color", "Precio"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabla_autos);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(10, 260, 670, 260);
+
+        botn_salir.setText("Salir");
+        botn_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botn_salirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botn_salir);
+        botn_salir.setBounds(600, 220, 80, 30);
+
+        boton_guardar.setText("Guardar");
+        boton_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_guardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(boton_guardar);
+        boton_guardar.setBounds(20, 220, 80, 30);
+
+        boton_editar.setText("Editar");
+        getContentPane().add(boton_editar);
+        boton_editar.setBounds(140, 220, 80, 30);
+
+        boton_eliminar.setText("Eliminar");
+        getContentPane().add(boton_eliminar);
+        boton_eliminar.setBounds(260, 220, 80, 30);
+        getContentPane().add(lblNotifica);
+        lblNotifica.setBounds(10, 530, 670, 30);
+
+        setBounds(0, 0, 707, 618);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botn_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_botn_salirActionPerformed
+
+    private void boton_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_guardarActionPerformed
+        if (textf_placa.getText().trim().isEmpty()||textf_marca.getText().trim().isEmpty()||textf_modelo.getText().trim().isEmpty()||textf_color.getText().trim().isEmpty()||textf_precio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Complete todos los datos");
+        } else {
+            
+        }
+    }//GEN-LAST:event_boton_guardarActionPerformed
+    private void cargarTabla(){
+        controlAutos.cargar();
+        controlAutos.getListaCliente();
+        String[] columnas={"Placa", "Marca", "Modelo", "Color", "Precio"};
+        String[][] tabla = controlAutos.toArray();
+        tabla_autos.setModel(new DefaultTableModel(tabla, columnas));
+    }
     /**
      * @param args the command line arguments
      */
@@ -78,5 +194,23 @@ public class FrmAutos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botn_salir;
+    private javax.swing.JButton boton_editar;
+    private javax.swing.JButton boton_eliminar;
+    private javax.swing.JButton boton_guardar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblNotifica;
+    private javax.swing.JTable tabla_autos;
+    private javax.swing.JTextField textf_color;
+    private javax.swing.JTextField textf_marca;
+    private javax.swing.JTextField textf_modelo;
+    private javax.swing.JTextField textf_placa;
+    private javax.swing.JTextField textf_precio;
     // End of variables declaration//GEN-END:variables
 }
