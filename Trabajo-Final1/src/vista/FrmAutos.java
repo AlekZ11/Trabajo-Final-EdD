@@ -49,6 +49,8 @@ public class FrmAutos extends javax.swing.JFrame {
         boton_editar = new javax.swing.JButton();
         boton_eliminar = new javax.swing.JButton();
         lblNotifica = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        textf_precio1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -58,7 +60,7 @@ public class FrmAutos extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(270, 10, 93, 36);
 
-        jLabel2.setText("Placa:");
+        jLabel2.setText("Chasis:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(10, 60, 50, 30);
         getContentPane().add(textf_placa);
@@ -78,15 +80,15 @@ public class FrmAutos extends javax.swing.JFrame {
 
         jLabel5.setText("Color:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(110, 140, 50, 30);
+        jLabel5.setBounds(10, 140, 50, 30);
         getContentPane().add(textf_color);
-        textf_color.setBounds(170, 140, 140, 30);
+        textf_color.setBounds(50, 140, 140, 30);
 
         jLabel6.setText("Precio:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(360, 140, 50, 30);
+        jLabel6.setBounds(230, 150, 50, 30);
         getContentPane().add(textf_precio);
-        textf_precio.setBounds(420, 140, 140, 30);
+        textf_precio.setBounds(280, 150, 140, 30);
 
         tabla_autos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,6 +138,12 @@ public class FrmAutos extends javax.swing.JFrame {
         boton_eliminar.setBounds(260, 220, 80, 30);
         getContentPane().add(lblNotifica);
         lblNotifica.setBounds(10, 530, 670, 30);
+
+        jLabel7.setText("Año:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(480, 150, 50, 30);
+        getContentPane().add(textf_precio1);
+        textf_precio1.setBounds(530, 150, 140, 30);
 
         setBounds(0, 0, 707, 618);
     }// </editor-fold>//GEN-END:initComponents
@@ -204,6 +212,7 @@ public class FrmAutos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNotifica;
     private javax.swing.JTable tabla_autos;
@@ -212,5 +221,6 @@ public class FrmAutos extends javax.swing.JFrame {
     private javax.swing.JTextField textf_modelo;
     private javax.swing.JTextField textf_placa;
     private javax.swing.JTextField textf_precio;
+    private javax.swing.JTextField textf_precio1;
     // End of variables declaration//GEN-END:variables
 }
