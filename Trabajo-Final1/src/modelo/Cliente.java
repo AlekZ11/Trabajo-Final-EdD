@@ -13,7 +13,6 @@ public class Cliente {
    private Integer identificacion;
    private String telefono;
    private String direccion;
-   private HistorialCompras historial;
 
     public Cliente(String nombres, Integer identificacion, String telefono, String direccion) {
         this.nombres = nombres;
@@ -36,14 +35,6 @@ public class Cliente {
 
     public void setIdentificacion(Integer identificacion) {
         this.identificacion = identificacion;
-    }
-
-    public HistorialCompras getHistorial() {
-        return historial;
-    }
-
-    public void setHistorial(HistorialCompras historial) {
-        this.historial = historial;
     }
 
     public String getTelefono() {
