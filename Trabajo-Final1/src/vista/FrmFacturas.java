@@ -4,6 +4,10 @@
  */
 package vista;
 
+import controlador.ControladorFacturas;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Autos;
 import modelo.Cliente;
 import modelo.Factura;
@@ -18,6 +22,7 @@ public class FrmFacturas extends javax.swing.JFrame {
     //Cliente cliente;
     FrmAutos vistaA = new FrmAutos();
     Factura factura = new Factura();
+    ControladorFacturas f = new ControladorFacturas();
     /**
      * Creates new form FrmFacturas
      * @param c
@@ -73,6 +78,7 @@ public class FrmFacturas extends javax.swing.JFrame {
         lblMatricula = new javax.swing.JLabel();
         lblVenta = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -288,6 +294,13 @@ public class FrmFacturas extends javax.swing.JFrame {
                 .addGap(0, 17, Short.MAX_VALUE))
         );
 
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
         jMenu2.setText("Vistas");
 
         jMenuItem2.setText("Autos");
@@ -315,16 +328,19 @@ public class FrmFacturas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,7 +353,9 @@ public class FrmFacturas extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardar)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
@@ -387,6 +405,17 @@ public class FrmFacturas extends javax.swing.JFrame {
         llenarDatosVehiculo();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        try {
+            // TODO add your handling code here:
+            f = new ControladorFacturas();
+            f.getListaFactura().insertarAlFinal(factura);
+            f.guardar();
+        } catch (IOException ex) {
+            Logger.getLogger(FrmFacturas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
     public void vistaAutos(){
         FrmAutos vistaM = new FrmAutos();
         vistaM.setLocationRelativeTo(null);
@@ -412,6 +441,7 @@ public class FrmFacturas extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
