@@ -61,6 +61,7 @@ public class ControladorAutos {
         }
 
     }
+    
     public String[][] toArray(){
         String[][] carro = new String[getSize()][6];
         for (int i = 0; i < carro.length; i++) {

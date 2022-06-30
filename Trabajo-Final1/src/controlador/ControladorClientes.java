@@ -30,6 +30,17 @@ public class ControladorClientes {
     public int getSize() {
         return listaCliente.getSize();
     }
+    
+    public int getClienteById(int id){
+        int x = 0;
+        for (int i = 0; i < getSize(); i++) {
+            if(listaCliente.obtenerDato(i).getIdentificacion() == id){
+                x = i;
+                break;
+            }
+        }
+        return x;
+    }
 
     public void guardar() throws IOException {
         Gson json = new Gson();
