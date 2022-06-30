@@ -5,6 +5,7 @@
 package vista;
 
 import controlador.ControladorAutos;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Autos;
@@ -26,6 +27,8 @@ public class FrmAutos extends javax.swing.JFrame {
     }
     ControladorAutos controlAutos = new ControladorAutos();
     Autos autoSeleccionado = new Autos();
+    int pos=-1;
+    boolean editar=false;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,9 +40,8 @@ public class FrmAutos extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        textf_placa = new javax.swing.JTextField();
+        textf_chasis = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        textf_marca = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         textf_modelo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -54,8 +56,9 @@ public class FrmAutos extends javax.swing.JFrame {
         boton_eliminar = new javax.swing.JButton();
         lblNotifica = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        textf_precio1 = new javax.swing.JTextField();
+        textf_anio = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        combob_marca = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -68,14 +71,12 @@ public class FrmAutos extends javax.swing.JFrame {
         jLabel2.setText("Chasis:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(10, 60, 50, 30);
-        getContentPane().add(textf_placa);
-        textf_placa.setBounds(50, 60, 140, 30);
+        getContentPane().add(textf_chasis);
+        textf_chasis.setBounds(50, 60, 140, 30);
 
         jLabel3.setText("Marca:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(230, 60, 50, 30);
-        getContentPane().add(textf_marca);
-        textf_marca.setBounds(280, 60, 140, 30);
 
         jLabel4.setText("Modelo:");
         getContentPane().add(jLabel4);
@@ -147,8 +148,8 @@ public class FrmAutos extends javax.swing.JFrame {
         jLabel7.setText("Año:");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(480, 150, 50, 30);
-        getContentPane().add(textf_precio1);
-        textf_precio1.setBounds(530, 150, 140, 30);
+        getContentPane().add(textf_anio);
+        textf_anio.setBounds(530, 150, 140, 30);
 
         jButton1.setText("Seleccionar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +160,10 @@ public class FrmAutos extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(580, 530, 100, 30);
 
+        combob_marca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ferrari", "Mazda", "Toyota", "Chevrolet", "Hyundai" }));
+        getContentPane().add(combob_marca);
+        combob_marca.setBounds(280, 70, 140, 22);
+
         setBounds(0, 0, 707, 615);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -167,12 +172,51 @@ public class FrmAutos extends javax.swing.JFrame {
     }//GEN-LAST:event_botn_salirActionPerformed
 
     private void boton_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_guardarActionPerformed
-        if (textf_placa.getText().trim().isEmpty()||textf_marca.getText().trim().isEmpty()||textf_modelo.getText().trim().isEmpty()||textf_color.getText().trim().isEmpty()||textf_precio.getText().trim().isEmpty()) {
+        if (textf_chasis.getText().trim().isEmpty()||textf_modelo.getText().trim().isEmpty()||textf_color.getText().trim().isEmpty()||textf_precio.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Complete todos los datos");
         } else {
-            
+            try {
+                if (editar) {
+                    controlAutos.getListaAuto().obtenerDato(pos).setChasis(textf_chasis.getText());
+                    controlAutos.getListaAuto().obtenerDato(pos).setMarca(comprobarComboB());
+                    controlAutos.getListaAuto().obtenerDato(pos).setModelo(textf_modelo.getText());
+                    controlAutos.getListaAuto().obtenerDato(pos).setColor(textf_color.getText());
+                    controlAutos.getListaAuto().obtenerDato(pos).setPrecio(Double.parseDouble(textf_precio.getText()));
+                    controlAutos.getListaAuto().obtenerDato(pos).setAnio(Integer.parseInt(textf_anio.getText()));
+                } else {
+                    controlAutos.getListaAuto().insertarAlInicio(new Autos(textf_chasis.getText(), comprobarComboB(), textf_color.getText(),textf_modelo.getText(), Double.valueOf(textf_precio.getText()), Integer.parseInt(textf_anio.getText())));
+                }
+                controlAutos.guardar();        // TODO add your handling code here:
+                cargarTabla();
+                
+            } catch (IOException ex) {
+                System.out.println("no se pudo guardar los datos");
+            }
         }
     }//GEN-LAST:event_boton_guardarActionPerformed
+    private Marcas comprobarComboB(){
+        Marcas m;
+        switch (combob_marca.getSelectedIndex()) {
+                        case 0:
+                            m= Marcas.Ferrari;
+                            break;
+                        case 1:
+                            m= Marcas.Mazda;
+                            break;
+                        case 2:
+                            m= Marcas.Toyota;
+                            break;
+                        case 3:
+                            m= Marcas.Chevrolet;
+                            break;
+                        case 4:
+                            m= Marcas.Hyundai;
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+        return m;
+    }
     public Autos getAutos(){
         return autoSeleccionado;
     }
@@ -186,10 +230,10 @@ public class FrmAutos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
     private void cargarTabla(){
-        controlAutos.cargar();
         controlAutos.getListaAuto();
         String[] columnas={"Chasis", "Marca", "Modelo", "Color", "Precio", "Año"};
         String[][] tabla = controlAutos.toArray();
+        tabla_autos.removeAll();
         tabla_autos.setModel(new DefaultTableModel(tabla, columnas));
     }
     /**
@@ -232,6 +276,7 @@ public class FrmAutos extends javax.swing.JFrame {
     private javax.swing.JButton boton_editar;
     private javax.swing.JButton boton_eliminar;
     private javax.swing.JButton boton_guardar;
+    private javax.swing.JComboBox<String> combob_marca;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -243,11 +288,10 @@ public class FrmAutos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNotifica;
     private javax.swing.JTable tabla_autos;
+    private javax.swing.JTextField textf_anio;
+    private javax.swing.JTextField textf_chasis;
     private javax.swing.JTextField textf_color;
-    private javax.swing.JTextField textf_marca;
     private javax.swing.JTextField textf_modelo;
-    private javax.swing.JTextField textf_placa;
     private javax.swing.JTextField textf_precio;
-    private javax.swing.JTextField textf_precio1;
     // End of variables declaration//GEN-END:variables
 }
