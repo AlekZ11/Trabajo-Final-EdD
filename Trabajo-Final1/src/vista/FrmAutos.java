@@ -340,7 +340,7 @@ public class FrmAutos extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setBounds(0, 0, 929, 539);
+        setBounds(0, 0, 929, 564);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botn_salirActionPerformed
