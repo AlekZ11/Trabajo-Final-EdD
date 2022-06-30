@@ -24,6 +24,8 @@ public class FrmClientes extends javax.swing.JFrame {
     TablaClientes tc;
     boolean editarCliente = false;
     int pos = -1;
+    ListaEnlazadaServices<Cliente> busqueda  = new ListaEnlazadaServices<>();
+    FrmFacturas vistaF;
 
     /**
      * Creates new form FrmClientes
@@ -111,7 +113,6 @@ public class FrmClientes extends javax.swing.JFrame {
     }
 
     public void buscar() throws Exception {
-        ListaEnlazadaServices<Cliente> busqueda = new ListaEnlazadaServices<>();
         if (!txtBuscar.getText().trim().isEmpty()) {
             boolean isNumeric = (txtBuscar.getText()).matches("[+-]?\\d*(\\.\\d+)?");
             if (isNumeric) {
@@ -123,18 +124,27 @@ public class FrmClientes extends javax.swing.JFrame {
                 cargarTabla(busqueda);
             }
         } else {
+            busqueda = new ListaEnlazadaServices<>();
             cargarTabla(cc.getListaCliente());
         }
     }
-    
-    public void vistaFactura(){
-        FrmFacturas vistaF = new FrmFacturas();
-        vistaF.setLocationRelativeTo(null);
-        vistaF.setVisible(true);
-        this.setVisible(false);
+
+    public void vistaFactura() {
+        int fila = tblCliente.getSelectedRow();
+        if (fila >= 0 ) {
+            if(busqueda.getSize() > 0){
+                System.out.println("Pasando ppr busqueda");
+                vistaF = new FrmFacturas(cc.getListaCliente().obtenerDato(cc.getClienteById(busqueda.obtenerDato(fila).getIdentificacion())));
+            }else{
+                vistaF = new FrmFacturas(cc.getListaCliente().obtenerDato(fila));
+            }
+            vistaF.setLocationRelativeTo(null);
+            vistaF.setVisible(true);
+            this.setVisible(false);
+        }
     }
-    
-    public void vistaAutos(){
+
+    public void vistaAutos() {
         FrmAutos vistaM = new FrmAutos();
         vistaM.setLocationRelativeTo(null);
         vistaM.setVisible(true);

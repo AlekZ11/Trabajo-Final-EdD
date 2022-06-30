@@ -31,10 +31,10 @@ public class ControladorClientes {
         return listaCliente.getSize();
     }
     
-    public int get(String id){
+    public int getClienteById(int id){
         int x = 0;
         for (int i = 0; i < getSize(); i++) {
-            if(listaCliente.obtenerDato(i).getIdentificacion() == Integer.valueOf(id)){
+            if(listaCliente.obtenerDato(i).getIdentificacion() == id){
                 x = i;
                 break;
             }

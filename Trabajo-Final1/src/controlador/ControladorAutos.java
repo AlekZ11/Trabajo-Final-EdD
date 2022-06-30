@@ -16,12 +16,12 @@ import modelo.Autos;
 public class ControladorAutos {
     ListaEnlazadaServices<Autos> listaAutos = new ListaEnlazadaServices<Autos>();
 
-    public ListaEnlazadaServices<Autos> getListaCliente() {
+    public ListaEnlazadaServices<Autos> getListaAuto() {
         return listaAutos;
     }
 
-    public void setListaCliente(ListaEnlazadaServices<Autos> listaCliente) {
-        this.listaAutos = listaCliente;
+    public void setListaAuto(ListaEnlazadaServices<Autos> listaAuto) {
+        this.listaAutos = listaAuto;
     }
 
     public int getSize() {
@@ -30,11 +30,11 @@ public class ControladorAutos {
 
     public void guardar() throws IOException {
         Gson json = new Gson();
-        Autos[] clientes = new Autos[listaAutos.getSize()];
+        Autos[] auto = new Autos[listaAutos.getSize()];
         for (int i = 0; i < listaAutos.getSize(); i++) {
-            clientes[i] = listaAutos.obtenerDato(i);
+            auto[i] = listaAutos.obtenerDato(i);
         }
-        String jsons = json.toJson(clientes);
+        String jsons = json.toJson(auto);
         FileWriter fw = new FileWriter("Autos" + ".json");
         fw.write(jsons);
         fw.flush();
@@ -63,7 +63,7 @@ public class ControladorAutos {
     }
     
     public String[][] toArray(){
-        String[][] carro = new String[getSize()][4];
+        String[][] carro = new String[getSize()][6];
         for (int i = 0; i < carro.length; i++) {
             carro[i][0] = listaAutos.obtenerDato(i).getChasis();
             carro[i][1] = listaAutos.obtenerDato(i).getMarca().toString();

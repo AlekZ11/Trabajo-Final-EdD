@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/LENOVO%20LEGION%205/Documents/NetBeansProjects/Trabajo-Final-EdD/Trabajo-Final1/src/vista/FrmClientes.java</file>
             <file>file:/C:/Users/LENOVO%20LEGION%205/Documents/NetBeansProjects/Trabajo-Final-EdD/Trabajo-Final1/src/controlador/ControladorAutos.java</file>
             <file>file:/C:/Users/LENOVO%20LEGION%205/Documents/NetBeansProjects/Trabajo-Final-EdD/Trabajo-Final1/src/vista/FrmAutos.java</file>
@@ -12,6 +13,13 @@
             <file>file:/C:/Users/LENOVO%20LEGION%205/Documents/NetBeansProjects/Trabajo-Final-EdD/Trabajo-Final1/src/controlador/ControladorClientes.java</file>
             <file>file:/C:/Users/LENOVO%20LEGION%205/Documents/NetBeansProjects/Trabajo-Final-EdD/Trabajo-Final1/src/controlador/lista/ListaEnlazada.java</file>
             <file>file:/C:/Users/LENOVO%20LEGION%205/Documents/NetBeansProjects/Trabajo-Final-EdD/Trabajo-Final1/src/vista/FrmFacturas.java</file>
+=======
+            <file>file:/C:/Users/Usuario%20iTC/Documents/GitHub/Trabajo-Final-EdD/Trabajo-Final1/src/vista/FrmFacturas.java</file>
+            <file>file:/C:/Users/Usuario%20iTC/Documents/GitHub/Trabajo-Final-EdD/Trabajo-Final1/src/modelo/Autos.java</file>
+            <file>file:/C:/Users/Usuario%20iTC/Documents/GitHub/Trabajo-Final-EdD/Trabajo-Final1/src/modelo/Factura.java</file>
+            <file>file:/C:/Users/Usuario%20iTC/Documents/GitHub/Trabajo-Final-EdD/Trabajo-Final1/src/vista/FrmClientes.java</file>
+            <file>file:/C:/Users/Usuario%20iTC/Documents/GitHub/Trabajo-Final-EdD/Trabajo-Final1/src/vista/FrmAutos.java</file>
+>>>>>>> 8bb77aa4ea5508d9ccff13a4f45dd2a761a7e37c
         </group>
     </open-files>
 </project-private>
