@@ -8,18 +8,6 @@ package modelo;
  *
  * @author LENOVO LEGION 5
  */
-public class Marcas {
-    private String nombres;
-
-    public Marcas(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
+public enum Marcas {
+    Ferrari,Mazda,Toyota,Chevrolet,Hyundai;
 }
