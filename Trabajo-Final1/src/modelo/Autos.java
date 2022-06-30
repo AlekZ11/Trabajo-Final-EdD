@@ -28,8 +28,8 @@ public class Autos {
     /**
      * @return the marca
      */
-    public Marcas getMarca() {
-        return marca;
+    public String getMarca() {
+        return marca.getNombres();
     }
 
     /**

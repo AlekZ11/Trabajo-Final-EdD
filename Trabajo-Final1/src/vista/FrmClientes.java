@@ -129,7 +129,8 @@ public class FrmClientes extends javax.swing.JFrame {
         }
     }
 
-    public void vistaFactura() {
+    public void vistaFactura(boolean aux) {
+        if(aux){
         int fila = tblCliente.getSelectedRow();
         if (fila >= 0 ) {
             if(busqueda.getSize() > 0){
@@ -138,6 +139,11 @@ public class FrmClientes extends javax.swing.JFrame {
             }else{
                 vistaF = new FrmFacturas(cc.getListaCliente().obtenerDato(fila));
             }
+            vistaF.setLocationRelativeTo(null);
+            vistaF.setVisible(true);
+        }
+        }else{
+            vistaF = new FrmFacturas();
             vistaF.setLocationRelativeTo(null);
             vistaF.setVisible(true);
             this.setVisible(false);
@@ -200,7 +206,7 @@ public class FrmClientes extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado de clientes"));
 
@@ -493,7 +499,8 @@ public class FrmClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscarKeyReleased
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
-        vistaFactura();        // TODO add your handling code here:
+        vistaFactura(true);        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -501,7 +508,7 @@ public class FrmClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        vistaFactura();        // TODO add your handling code here:
+        vistaFactura(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**

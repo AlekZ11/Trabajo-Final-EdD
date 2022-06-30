@@ -34,7 +34,14 @@ public class FrmFacturas extends javax.swing.JFrame {
         //llenarDatosCliente();
         //System.out.println(cliente.getNombres());
         initComponents();
+        this.setResizable(false);
         llenarDatosCliente();
+    }
+    
+    public FrmFacturas() {
+        factura.setVendedor("PATRICIO BETANCOURT");
+        initComponents();
+        this.setResizable(false);
     }
     
     /**
@@ -411,6 +418,7 @@ public class FrmFacturas extends javax.swing.JFrame {
             f = new ControladorFacturas();
             f.getListaFactura().insertarAlFinal(factura);
             f.guardar();
+            dispose();
         } catch (IOException ex) {
             Logger.getLogger(FrmFacturas.class.getName()).log(Level.SEVERE, null, ex);
         }

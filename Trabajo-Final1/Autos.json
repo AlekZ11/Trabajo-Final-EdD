@@ -1,1 +1,1 @@
-[{"chasis":"asd","marca":"Mazda","color":"asd","modelo":"asd","precio":654.0,"anio":2013}]
+[{"chasis":"asd","marca":{"nombres":"Hyunday"},"color":"asd","modelo":"asd","precio":23.0,"anio":2015},{"chasis":"as","marca":{"nombres":"Hyunday"},"color":"asd","modelo":"asd","precio":25010.0,"anio":2015}]
