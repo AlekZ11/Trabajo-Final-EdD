@@ -16,6 +16,8 @@ public class Factura {
     private String vendedor;
     private Cliente cliente;
     private Autos auto;
+    private Double Matricula;
+    private Double venta;
 
     public Factura() {
         this.fechaVenta = LocalDate.now();
@@ -68,6 +70,22 @@ public class Factura {
      */
     public void setAuto(Autos auto) {
         this.auto = auto;
+    }
+
+    public Double getMatricula() {
+        return Matricula;
+    }
+
+    public void setMatricula(Double Matricula) {
+        this.Matricula = Matricula;
+    }
+
+    public Double getVenta() {
+        return venta;
+    }
+
+    public void setVenta(Double venta) {
+        this.venta = venta;
     }
     
     
